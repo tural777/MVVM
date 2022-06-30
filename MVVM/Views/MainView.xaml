@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MVVM.Views" 
         xmlns:ViewModels="clr-namespace:MVVM.ViewModels"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="800" 
@@ -15,16 +14,33 @@
     
     <StackPanel HorizontalAlignment="Center">
 
-        <TextBlock Margin="7 7 7 0" FontSize="36">Make</TextBlock>
-        <TextBlock Margin="7 7 7 0" FontSize="36" Text="{Binding Car.Make}"></TextBlock>
+        <ComboBox  FontSize="26" DisplayMemberPath="Model" SelectedItem="{Binding SelectedCar}" ItemsSource="{Binding Cars}"></ComboBox>
 
-        <TextBlock Margin="7 7 7 0" FontSize="36">Model</TextBlock>
-        <TextBlock Margin="7 7 7 0" FontSize="36" Text="{Binding Car.Model}"></TextBlock>
+        <TextBlock Margin="5" FontSize="26">Make</TextBlock>
+        <TextBlock Margin="5" FontSize="26" Text="{Binding SelectedCar.Make}"></TextBlock>
 
-        <TextBlock Margin="7 7 7 0" FontSize="36">Year</TextBlock>
-        <TextBlock Margin="7 7 7 0" FontSize="36" Text="{Binding Car.Year}"></TextBlock>
+        <TextBlock Margin="5" FontSize="26">Model</TextBlock>
+        <TextBlock Margin="5" FontSize="26" Text="{Binding SelectedCar.Model}"></TextBlock>
+
+        <TextBlock Margin="5" FontSize="26">Year</TextBlock>
+        <TextBlock Margin="5" FontSize="26" Text="{Binding SelectedCar.Year}"></TextBlock>
 
 
-        <Button Command="{Binding ShowCommand}" FontSize="36">Show</Button>
+
+        <StackPanel Orientation="Horizontal">
+            <Button Margin="5"
+                    Cursor="Hand"
+                    Command="{Binding AddCommand}"
+                    FontSize="26">Add
+            </Button>
+            
+            <Button Margin="5" 
+                    Cursor="Hand" 
+                    Command="{Binding ShowCommand}" 
+                    FontSize="26">Show
+            </Button>
+            
+        </StackPanel>
+        
     </StackPanel>
 </Window>
